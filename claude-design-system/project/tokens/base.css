@@ -1,0 +1,27 @@
+/* ===========================================================================
+   BASE — light resets so specimen cards & kits render on-brand by default.
+   ========================================================================= */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--color-canvas);
+  color: var(--color-body);
+  font-family: var(--font-body);
+  font-size: var(--type-body-md-size);
+  line-height: var(--type-body-md-line);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: var(--type-display-weight);
+  color: var(--color-ink);
+  margin: 0;
+}
+
+a { color: var(--color-primary); text-decoration: none; }
+
+::selection { background: rgba(50, 130, 184, 0.2); }

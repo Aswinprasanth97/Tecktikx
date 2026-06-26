@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(Get-Process msedge -ErrorAction SilentlyContinue)",
+      "PowerShell(Stop-Process -Force)",
+      "PowerShell(\"killed\")",
+      "Read(//c/Users/ASWINO~1/AppData/Local/Temp/claude/c--Users-aswin-office-Documents-work-Tecktikx/ff582d48-6619-4576-a724-672dce043c75/scratchpad/**)",
+      "Bash(node test.js)",
+      "Bash(node lint.js)",
+      "PowerShell(\"---NOW---\")",
+      "PowerShell(Get-Process node,msedge -ErrorAction SilentlyContinue)",
+      "PowerShell(Get-ChildItem \"c:\\\\Users\\\\aswin office\\\\Documents\\\\work\\\\Tecktikx\\\\tecktikx-site\\\\\" | Sort-Object LastWriteTime -Descending | Select-Object Name,Length,LastWriteTime; \"--- now: $\\(Get-Date -Format 'HH:mm:ss'\\) ---\")",
+      "PowerShell(Write-Output \"=== Contact.jsx right now ===\"; Get-Item \"c:\\\\Users\\\\aswin office\\\\Documents\\\\work\\\\Tecktikx\\\\tecktikx-site\\\\Contact.jsx\" -ErrorAction SilentlyContinue | Select-Object Length,LastWriteTime; Write-Output \"=== design source ui_kits/tecktikx ===\"; Get-ChildItem \"c:\\\\Users\\\\aswin office\\\\Documents\\\\work\\\\Tecktikx\\\\claude-design-system\\\\project\\\\ui_kits\\\\tecktikx\\\\\" -ErrorAction SilentlyContinue | Select-Object Name; Write-Output \"=== manifest mentions of Contact ===\"; \\(Select-String -Path \"c:\\\\Users\\\\aswin office\\\\Documents\\\\work\\\\Tecktikx\\\\claude-design-system\\\\project\\\\_ds_manifest.json\" -Pattern \"Contact\" -SimpleMatch -ErrorAction SilentlyContinue | Measure-Object\\).Count)",
+      "PowerShell(Write-Output \"=== Is path under OneDrive? ===\"; $env:OneDrive; Test-Path \"c:\\\\Users\\\\aswin office\\\\OneDrive\"; Write-Output \"=== node process command lines ===\"; Get-CimInstance Win32_Process -Filter \"name='node.exe'\" | Select-Object ProcessId, @{n='CL';e={$_.CommandLine}} | Format-List; Write-Output \"=== any process with design/sync/watch/vite in cmdline ===\"; Get-CimInstance Win32_Process | Where-Object { $_.CommandLine -match 'design|sync|watch|vite|chokidar|nodemon' } | Select-Object ProcessId, Name, @{n='CL';e={$_.CommandLine.Substring\\(0,[Math]::Min\\(160,$_.CommandLine.Length\\)\\)}} | Format-List)"
+    ]
+  }
+}

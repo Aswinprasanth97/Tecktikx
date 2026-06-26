@@ -1,0 +1,80 @@
+<!-- @dsCard group="Colors" viewport="700x170" name="Brand & Accent" subtitle="Brand primary + accent palette — tweakable" -->
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8" />
+<link rel="stylesheet" href="../styles.css" />
+<style>
+  body { margin: 0; padding: 24px; background: var(--color-canvas); }
+  .row { display: flex; gap: 14px; flex-wrap: wrap; }
+  .sw { width: 150px; }
+  .chip { height: 64px; border-radius: var(--radius-md); border: 1px solid rgba(20,20,19,0.06); }
+  .name { font: 500 13px/1.4 var(--font-body); color: var(--color-ink); margin-top: 8px; }
+  .hex { font: 400 12px/1.4 var(--font-mono); color: var(--color-muted); text-transform: lowercase; }
+</style></head>
+<body>
+<div id="root"></div>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel">
+  const { useTweaks, TweaksPanel, TweakSection, TweakColor } = window;
+
+  // Each palette: [primary, primary-active, primary-disabled, accent-1, accent-2]
+  const PALETTES = {
+    'Ocean':    ['#3282b8', '#0f4c75', '#d8ecf9', '#1b262c', '#bbe1fa'],
+    'Deep Sea': ['#0f4c75', '#0a3454', '#cfe2f0', '#1b262c', '#3282b8'],
+    'Sky':      ['#3e93c9', '#2a73a3', '#e2f1fb', '#1b262c', '#7cb9dd'],
+    'Midnight': ['#1b262c', '#0f1418', '#cdd3d7', '#0f4c75', '#3282b8'],
+    'Azure':    ['#2f6fa8', '#1d4d78', '#d6e9f6', '#1b262c', '#bbe1fa'],
+  };
+  const LABELS = ['Primary', 'Primary Active', 'Primary Disabled', 'Accent 1', 'Accent 2'];
+
+  const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+    "palette": ["#3282b8", "#0f4c75", "#d8ecf9", "#1b262c", "#bbe1fa"]
+  }/*EDITMODE-END*/;
+
+  function nameFor(palette) {
+    const hit = Object.entries(PALETTES).find(([, p]) => p[0].toLowerCase() === (palette[0] || '').toLowerCase());
+    return hit ? hit[0] : 'Custom';
+  }
+
+  function App() {
+    const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
+    const palette = t.palette || TWEAK_DEFAULTS.palette;
+    const labels = LABELS.slice();
+    labels[0] = `${labels[0]} / ${nameFor(palette)}`;
+
+    return (
+      <>
+        <div className="row">
+          {palette.map((hex, i) => (
+            <div className="sw" key={i}>
+              <div className="chip" style={{ background: hex }}></div>
+              <div className="name">{labels[i]}</div>
+              <div className="hex">{hex}</div>
+            </div>
+          ))}
+        </div>
+
+        <TweaksPanel>
+          <TweakSection label="Brand palette" />
+          <TweakColor
+            label="Palette"
+            value={palette}
+            options={Object.values(PALETTES)}
+            onChange={(v) => setTweak('palette', v)}
+          />
+          <TweakColor
+            label="Primary only"
+            value={palette[0]}
+            options={Object.values(PALETTES).map((p) => p[0])}
+            onChange={(v) => setTweak('palette', [v, ...palette.slice(1)])}
+          />
+        </TweaksPanel>
+      </>
+    );
+  }
+
+  ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body></html>

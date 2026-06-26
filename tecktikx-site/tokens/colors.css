@@ -1,0 +1,51 @@
+/* ===========================================================================
+   COLORS — Claude / Anthropic marketing surface
+   Cool blue rebrand based on the palette #1b262c · #0f4c75 · #3282b8 · #bbe1fa.
+   Base palette first, then semantic aliases. Never inline hex in components —
+   always reference these custom properties.
+   ========================================================================= */
+
+:root {
+  /* ---- Brand & Accent ---------------------------------------------------- */
+  --color-primary:           #3282b8; /* signature medium blue              */
+  --color-primary-active:    #0f4c75; /* press / hover-darker variant        */
+  --color-primary-disabled:  #cdddeb; /* desaturated light-blue disabled     */
+  --color-accent-teal:       #5aa6d6; /* sky-blue secondary accent           */
+  --color-accent-amber:      #bbe1fa; /* light-blue companion highlight      */
+
+  /* ---- Surfaces ---------------------------------------------------------- */
+  --color-canvas:               #f5f9fc; /* default page floor — cool light  */
+  --color-surface-soft:         #eaf3fa; /* soft band backgrounds            */
+  --color-surface-card:         #dcebf7; /* feature / content cards          */
+  --color-surface-cream-strong: #c9e1f3; /* selected tabs, emphasized bands  */
+  --color-surface-dark:         #1b262c; /* code mockups, footer, featured   */
+  --color-surface-dark-elevated:#26333d; /* elevated cards inside dark bands */
+  --color-surface-dark-soft:    #202d36; /* code block bg inside dark cards  */
+
+  /* ---- Lines ------------------------------------------------------------- */
+  --color-hairline:      #d4e4f1; /* 1px border on light surfaces         */
+  --color-hairline-soft: #e3eef7; /* barely-visible inner divider         */
+
+  /* ---- Text -------------------------------------------------------------- */
+  --color-ink:           #1b262c; /* headlines + primary text — navy      */
+  --color-body-strong:   #22323d; /* emphasized paragraphs, lead text     */
+  --color-body:          #38505f; /* default running text — slate blue    */
+  --color-muted:         #5e7686; /* sub-heads, breadcrumbs, secondary    */
+  --color-muted-soft:    #8aa1b1; /* captions, fine-print, copyright      */
+  --color-on-primary:    #ffffff; /* text on blue buttons                 */
+  --color-on-dark:       #eef5fb; /* light-blue white on dark surfaces    */
+  --color-on-dark-soft:  #9bb4c6; /* footer body, secondary dark labels   */
+
+  /* ---- Semantic ---------------------------------------------------------- */
+  --color-success: #4fae9b; /* available / status dots (cool teal-green) */
+  --color-warning: #d6a93f; /* warning callouts                          */
+  --color-error:   #d05c5c; /* validation errors                         */
+
+  /* ---- Syntax highlight (code-window mockups) ---------------------------- */
+  --color-code-keyword: #5aa6d6; /* sky-blue keyword   */
+  --color-code-string:  #8ec7c4; /* soft teal string   */
+  --color-code-comment: #5e7686; /* slate comment      */
+  --color-code-func:    #bbe1fa; /* light-blue func    */
+  --color-code-num:     #7cc0e0; /* mid-blue number    */
+  --color-code-plain:   #d6e6f2; /* plain code text    */
+}

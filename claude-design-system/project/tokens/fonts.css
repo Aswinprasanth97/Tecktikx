@@ -1,0 +1,17 @@
+/* ===========================================================================
+   FONTS
+   Copernicus / StyreneB are licensed Anthropic typefaces with no public
+   webfont. Documented open-source substitutes are loaded here:
+     • Display serif  → Cormorant Garamond   (substitute for Copernicus/Tiempos)
+     • Body sans      → Inter                (substitute for StyreneB)
+     • Mono           → JetBrains Mono
+   Swap these @import / family vars when the licensed binaries are available.
+   ========================================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  --font-display: 'Cormorant Garamond', 'Tiempos Headline', Garamond, 'Times New Roman', serif;
+  --font-body:    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono:    'JetBrains Mono', 'SF Mono', ui-monospace, Menlo, Consolas, monospace;
+}

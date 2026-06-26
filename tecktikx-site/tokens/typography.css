@@ -1,0 +1,47 @@
+/* ===========================================================================
+   TYPOGRAPHY
+   Editorial split: serif display (Cormorant→Copernicus) + sans body (Inter→
+   StyreneB) + mono code. Display weight is 500 here to compensate for the
+   substitute serif's lighter color — switch to 400 with real Copernicus.
+   Negative tracking on display sizes is non-negotiable to the brand voice.
+   ========================================================================= */
+
+:root {
+  /* ---- Display (serif) --------------------------------------------------- */
+  --type-display-xl-size:   64px;  --type-display-xl-line:   1.05; --type-display-xl-track: -1.5px;
+  --type-display-lg-size:   48px;  --type-display-lg-line:   1.1;  --type-display-lg-track: -1px;
+  --type-display-md-size:   36px;  --type-display-md-line:   1.15; --type-display-md-track: -0.5px;
+  --type-display-sm-size:   28px;  --type-display-sm-line:   1.2;  --type-display-sm-track: -0.3px;
+  --type-display-weight:    500;   /* 400 with real Copernicus */
+
+  /* ---- Titles (sans) ----------------------------------------------------- */
+  --type-title-lg-size: 22px; --type-title-lg-line: 1.3;
+  --type-title-md-size: 18px; --type-title-md-line: 1.4;
+  --type-title-sm-size: 16px; --type-title-sm-line: 1.4;
+  --type-title-weight:  500;
+
+  /* ---- Body (sans) ------------------------------------------------------- */
+  --type-body-md-size: 16px; --type-body-md-line: 1.55;
+  --type-body-sm-size: 14px; --type-body-sm-line: 1.55;
+  --type-body-weight:  400;
+
+  /* ---- Small / labels ---------------------------------------------------- */
+  --type-caption-size:    13px; --type-caption-weight: 500;
+  --type-caption-up-size: 12px; --type-caption-up-track: 1.5px;
+  --type-button-size:     14px; --type-button-weight: 500;
+  --type-nav-size:        14px; --type-nav-weight: 500;
+  --type-code-size:       14px; --type-code-line: 1.6;
+}
+
+/* ---- Optional helper classes (components may use vars directly instead) --- */
+.ds-display-xl { font-family: var(--font-display); font-weight: var(--type-display-weight);
+  font-size: var(--type-display-xl-size); line-height: var(--type-display-xl-line); letter-spacing: var(--type-display-xl-track); }
+.ds-display-lg { font-family: var(--font-display); font-weight: var(--type-display-weight);
+  font-size: var(--type-display-lg-size); line-height: var(--type-display-lg-line); letter-spacing: var(--type-display-lg-track); }
+.ds-display-md { font-family: var(--font-display); font-weight: var(--type-display-weight);
+  font-size: var(--type-display-md-size); line-height: var(--type-display-md-line); letter-spacing: var(--type-display-md-track); }
+.ds-display-sm { font-family: var(--font-display); font-weight: var(--type-display-weight);
+  font-size: var(--type-display-sm-size); line-height: var(--type-display-sm-line); letter-spacing: var(--type-display-sm-track); }
+.ds-body { font-family: var(--font-body); font-weight: var(--type-body-weight);
+  font-size: var(--type-body-md-size); line-height: var(--type-body-md-line); }
+.ds-mono { font-family: var(--font-mono); font-size: var(--type-code-size); line-height: var(--type-code-line); }

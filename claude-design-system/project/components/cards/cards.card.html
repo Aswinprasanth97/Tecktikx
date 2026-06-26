@@ -1,0 +1,57 @@
+<!-- @dsCard group="Components" viewport="700x420" name="Cards & Code Window" subtitle="Cream, outline, coral surfaces + dark code mockup" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../../styles.css" />
+<style>
+  body { margin: 0; padding: 28px 32px; background: var(--color-canvas); }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  h4 { font-family: var(--font-display); font-weight: var(--type-display-weight); color: var(--color-ink); font-size: 18px; margin: 0 0 8px; letter-spacing: -0.3px; }
+  .dk h4 { color: var(--color-on-dark); }
+  p { margin: 0; font-size: 14px; line-height: 1.5; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+<script type="text/babel">
+  const { Card, CodeWindow, Tok, Button } = window.ClaudeDesignSystem_8d7c53;
+  function Demo() {
+    return (
+      <div className="grid">
+        <Card variant="feature">
+          <h4>Feature card</h4>
+          <p style={{color:'var(--color-body)'}}>Light blue surface, one step darker than canvas. The default content card.</p>
+        </Card>
+        <Card variant="outline">
+          <h4>Outline card</h4>
+          <p style={{color:'var(--color-body)'}}>Canvas + hairline. Used for pricing tiers and model comparison.</p>
+        </Card>
+        <Card variant="coral" pad="xl">
+          <h4 style={{color:'var(--color-on-primary)'}}>Primary callout</h4>
+          <p style={{color:'var(--color-on-primary)', marginBottom:16, opacity:.92}}>The voltage moment.</p>
+          <Button variant="on-coral">Get started</Button>
+        </Card>
+        <CodeWindow
+          filename="agent.py"
+          lines={[
+            <span><Tok kind="keyword">from</Tok> anthropic <Tok kind="keyword">import</Tok> Anthropic</span>,
+            <span><Tok kind="comment"># stream a response</Tok></span>,
+            <span>client = <Tok kind="func">Anthropic</Tok>()</span>,
+            <span>resp = client.messages.<Tok kind="func">create</Tok>(</span>,
+            <span>{"  "}model=<Tok kind="string">"claude-opus"</Tok></span>,
+            <span>)</span>,
+          ]}
+          status={<span><span style={{color:'var(--color-success)'}}>●</span> Connected · 312ms</span>}
+        />
+      </div>
+    );
+  }
+  ReactDOM.createRoot(document.getElementById('root')).render(<Demo />);
+</script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!-- @dsCard group="Colors" viewport="700x130" name="Semantic" subtitle="Status colors — rare on marketing surfaces" -->
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8" />
+<link rel="stylesheet" href="../styles.css" />
+<style>
+  body { margin: 0; padding: 24px; background: var(--color-canvas); }
+  .row { display: flex; gap: 14px; flex-wrap: wrap; }
+  .sw { width: 150px; }
+  .chip { height: 48px; border-radius: var(--radius-md); }
+  .name { font: 500 13px/1.4 var(--font-body); color: var(--color-ink); margin-top: 8px; }
+  .hex { font: 400 12px/1.4 var(--font-mono); color: var(--color-muted); }
+</style></head>
+<body>
+  <div class="row">
+    <div class="sw"><div class="chip" style="background:var(--color-success)"></div><div class="name">Success</div><div class="hex">#4fae9b</div></div>
+    <div class="sw"><div class="chip" style="background:var(--color-warning)"></div><div class="name">Warning</div><div class="hex">#d6a93f</div></div>
+    <div class="sw"><div class="chip" style="background:var(--color-error)"></div><div class="name">Error</div><div class="hex">#d05c5c</div></div>
+  </div>
+</body></html>

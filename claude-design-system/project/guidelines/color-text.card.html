@@ -1,0 +1,24 @@
+<!-- @dsCard group="Colors" viewport="700x180" name="Text Colors" subtitle="Warm-ink hierarchy on cream and on dark" -->
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8" />
+<link rel="stylesheet" href="../styles.css" />
+<style>
+  body { margin: 0; padding: 24px; background: var(--color-canvas); display: flex; gap: 16px; }
+  .panel { flex: 1; }
+  .dk { background: var(--color-surface-dark); border-radius: var(--radius-lg); padding: 18px 20px; }
+  .line { font: 500 16px/1.7 var(--font-body); display: flex; justify-content: space-between; }
+  .hex { font: 400 12px var(--font-mono); opacity: .7; }
+</style></head>
+<body>
+  <div class="panel">
+    <div class="line" style="color:var(--color-ink)">Ink <span class="hex">#1b262c</span></div>
+    <div class="line" style="color:var(--color-body-strong)">Body Strong <span class="hex">#22323d</span></div>
+    <div class="line" style="color:var(--color-body)">Body <span class="hex">#38505f</span></div>
+    <div class="line" style="color:var(--color-muted)">Muted <span class="hex">#5e7686</span></div>
+    <div class="line" style="color:var(--color-muted-soft)">Muted Soft <span class="hex">#8aa1b1</span></div>
+  </div>
+  <div class="panel dk">
+    <div class="line" style="color:var(--color-on-dark)">On Dark <span class="hex">#eef5fb</span></div>
+    <div class="line" style="color:var(--color-on-dark-soft)">On Dark Soft <span class="hex">#9bb4c6</span></div>
+  </div>
+</body></html>
