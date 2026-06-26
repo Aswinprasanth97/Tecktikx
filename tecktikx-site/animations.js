@@ -83,14 +83,6 @@ window.TecktikxAnims = (() => {
       .from('[data-hero-sub]',          { opacity: 0, y: 24, duration: 0.6  }, '-=0.4')
       .from('[data-hero-cta] > *',      { opacity: 0, y: 16, duration: 0.5, stagger: 0.12 }, '-=0.3')
       .from('[data-hero-illustration]', { opacity: 0, x: 40, duration: 0.8, ease: 'tkt.spring' }, '-=0.5');
-
-    tl.from('[data-chat-bubble]', {
-      opacity: 0, y: 20, duration: 0.5, stagger: 0.2, ease: 'tkt.spring'
-    }, '-=0.3');
-
-    gsap.to('[data-hero-spike]', {
-      rotation: 360, duration: 18, repeat: -1, ease: 'none'
-    });
   }
 
   /* ─── WORD-BY-WORD HEADLINE REVEALS ─────────────────────── */

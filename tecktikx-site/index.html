@@ -152,7 +152,7 @@
 
     return (
       <>
-        <TopNav current={page} onNav={navigate} onSignIn={() => navigate('contact')} />
+        <TopNav current={page} onNav={navigate} />
         {page === 'home'    && <Home    onCta={() => navigate('contact')} />}
         {page === 'contact' && <Contact />}
         <Footer />

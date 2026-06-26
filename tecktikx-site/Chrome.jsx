@@ -1,7 +1,7 @@
 // TopNav + Footer — Tecktikx chrome. Exposes TopNav and Footer to window.
 const { SpikeMark, Wordmark, Button } = window.ClaudeDesignSystem_8d7c53;
 
-function TopNav({ current, onNav, onSignIn }) {
+function TopNav({ current, onNav }) {
   const [menuOpen, setMenuOpen] = React.useState(false);
 
   const items = [
@@ -53,7 +53,6 @@ function TopNav({ current, onNav, onSignIn }) {
       </nav>
 
       <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: 8 }}>
-        <Button variant="text" onClick={onSignIn}>Sign in</Button>
         <Button variant="primary" onClick={() => onNav('contact')}>Get in touch</Button>
       </div>
 
@@ -96,7 +95,6 @@ function TopNav({ current, onNav, onSignIn }) {
             >{label}</a>
           ))}
           <div style={{ marginTop: 12, display: 'flex', gap: 8 }}>
-            <Button variant="secondary" onClick={() => { onSignIn(); setMenuOpen(false); }} style={{ flex: 1 }}>Sign in</Button>
             <Button variant="primary" onClick={() => { onNav('contact'); setMenuOpen(false); }} style={{ flex: 1 }}>Get in touch</Button>
           </div>
         </div>

@@ -9,45 +9,15 @@ function HeroIllustration() {
       data-hero-illustration
       style={{
         background: 'var(--color-surface-card)', borderRadius: 'var(--radius-xl)',
-        padding: 28, height: 380, display: 'flex', flexDirection: 'column',
-        gap: 14, justifyContent: 'center',
+        height: 380, overflow: 'hidden',
       }}
     >
-      <div style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
-        <span data-hero-spike style={{ display: 'inline-flex' }}>
-          <SpikeMark size={18} color="var(--color-primary)" />
-        </span>
-        <div style={{ fontFamily: 'var(--font-body)', fontWeight: 600, fontSize: 14, color: 'var(--color-ink)' }}>
-          Tecktikx
-        </div>
-      </div>
-
-      <div
-        data-chat-bubble
-        style={{
-          background: 'var(--color-canvas)', borderRadius: 12,
-          padding: '14px 16px', fontSize: 14, lineHeight: 1.55,
-          color: 'var(--color-body)', maxWidth: '88%',
-        }}
-      >
-        We need our order system talking to our accounting software — can you help?
-      </div>
-
-      <div
-        data-chat-bubble
-        style={{
-          background: 'var(--color-ink)', color: 'var(--color-on-dark)',
-          borderRadius: 12, padding: '14px 16px', fontSize: 14,
-          lineHeight: 1.55, alignSelf: 'flex-end', maxWidth: '92%',
-        }}
-      >
-        Yes. We've done this integration before. Let's map your data flows first and I'll have a plan to you by end of week.
-      </div>
-
-      <div style={{ display: 'flex', gap: 8, alignItems: 'center', color: 'var(--color-muted)', fontSize: 13 }}>
-        <span style={{ width: 8, height: 8, borderRadius: '50%', background: 'var(--color-success)', flexShrink: 0 }}></span>
-        Remote support · response in minutes
-      </div>
+      <img
+        src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=900&q=80"
+        alt="Tecktikx team collaborating on a software integration"
+        loading="lazy"
+        style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+      />
     </div>
   );
 }
