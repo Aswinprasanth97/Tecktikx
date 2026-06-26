@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Tecktikx — Engineering solutions that move your business forward</title>
+<link rel="icon" type="image/svg+xml" href="assets/spike-mark.svg" />
+
+<!-- Design system styles -->
+<link rel="stylesheet" href="styles.css" />
+
+<!-- GSAP core + plugins -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/TextPlugin.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/CustomEase.min.js"></script>
+
+<!-- Design system component bundle -->
+<script src="_ds_bundle.js"></script>
+
+<!-- GSAP plugin registration + brand eases -->
+<script>
+  gsap.registerPlugin(ScrollTrigger, TextPlugin, CustomEase);
+
+  CustomEase.create('tkt.out',    'M0,0 C0.05,0 0.133,0.333 0.2,0.5 0.267,0.667 0.333,1 1,1');
+  CustomEase.create('tkt.spring', 'M0,0 C0.175,0.885 0.32,1.275 1,1');
+  CustomEase.create('tkt.reveal', 'M0,0 C0,0 0.058,0.454 0.204,0.626 0.322,0.762 0.414,1 1,1');
+
+  // NOTE: reduced-motion is handled inside animations.js by SKIPPING entrance
+  // reveals (content stays visible). Never freeze the global timeline here —
+  // doing so leaves `from` tweens stuck at their invisible start state.
+</script>
+
+<style>
+  /* Base */
+  html  { scroll-behavior: auto; }
+  html, body { margin: 0; background: var(--color-canvas); }
+
+  /* Custom cursor */
+  #tkt-cursor {
+    position: fixed; width: 12px; height: 12px;
+    background: var(--color-primary); border-radius: 50%;
+    pointer-events: none; z-index: 9999;
+    mix-blend-mode: multiply; opacity: 0;
+    transform: translate(-50%, -50%);
+  }
+  #tkt-cursor-ring {
+    position: fixed; width: 40px; height: 40px;
+    border: 1.5px solid var(--color-primary); border-radius: 50%;
+    pointer-events: none; z-index: 9998; opacity: 0;
+    transform: translate(-50%, -50%);
+  }
+
+  /* Nav underline animation */
+  .tkt-nav-link { position: relative; }
+  .tkt-nav-link::after {
+    content: ''; position: absolute; bottom: -2px; left: 0;
+    width: 100%; height: 1.5px;
+    background: var(--color-primary);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.25s ease;
+  }
+  .tkt-nav-link:hover::after,
+  .tkt-nav-link.active::after { transform: scaleX(1); }
+
+  /* Headline split reveal helpers */
+  .tkt-split-word { display: inline-block; overflow: hidden; }
+  .tkt-split-char { display: inline-block; }
+
+  /* Responsive layout */
+  @media (max-width: 900px) {
+    [data-services-grid] { grid-template-columns: repeat(2, 1fr) !important; }
+  }
+  @media (max-width: 768px) {
+    [data-hero-grid],
+    [data-philosophy-grid] { grid-template-columns: 1fr !important; }
+    [data-hero-illustration] { display: none !important; }
+    [data-hero-h1] { font-size: 42px !important; }
+    .tkt-desktop-nav { display: none !important; }
+    .tkt-hamburger  { display: block !important; }
+  }
+  @media (max-width: 600px) {
+    [data-services-grid],
+    [data-mission-grid] { grid-template-columns: 1fr !important; }
+  }
+</style>
+</head>
+<body>
+
+<div id="tkt-cursor"></div>
+<div id="tkt-cursor-ring"></div>
+<div id="root"></div>
+
+<!-- React 18 + Babel standalone -->
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js"
+  integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L"
+  crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js"
+  integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm"
+  crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js"
+  integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y"
+  crossorigin="anonymous"></script>
+
+<!-- Tecktikx modules -->
+<script type="text/babel" src="animations.js"></script>
+<script type="text/babel" src="Chrome.jsx"></script>
+<script type="text/babel" src="Home.jsx"></script>
+<script type="text/babel" src="Contact.jsx"></script>
+
+<script type="text/babel">
+  function App() {
+    const [page, setPage] = React.useState('home');
+    const firstRender = React.useRef(true);
+    const pendingAnchor = React.useRef(null);
+
+    function navigate(next, anchor) {
+      // Same page: just scroll — to a section anchor, or back to the top.
+      if (next === page) {
+        if (anchor && window.TecktikxAnims) window.TecktikxAnims.scrollTo(anchor);
+        else window.scrollTo({ top: 0, behavior: 'smooth' });
+        return;
+      }
+      // Different page: remember any anchor to scroll to once the new page mounts.
+      pendingAnchor.current = anchor || null;
+      if (window.TecktikxAnims) {
+        window.TecktikxAnims.destroyAll();
+        window.TecktikxAnims.pageOut(() => setPage(next));
+      } else {
+        setPage(next);
+        window.scrollTo(0, 0);
+      }
+    }
+
+    React.useEffect(() => {
+      if (!window.TecktikxAnims) return;
+      if (firstRender.current) {
+        // Initial load — content is already visible, just run entrance animations
+        firstRender.current = false;
+        window.TecktikxAnims.initAll();
+      } else {
+        // After a page swap — root is already invisible from pageOut(), fade it in
+        window.TecktikxAnims.pageIn();
+      }
+      // If this navigation targeted a section, scroll to it after the page settles.
+      const anchor = pendingAnchor.current;
+      if (anchor) {
+        pendingAnchor.current = null;
+        setTimeout(() => { if (window.TecktikxAnims) window.TecktikxAnims.scrollTo(anchor); }, 650);
+      }
+    }, [page]);
+
+    return (
+      <>
+        <TopNav current={page} onNav={navigate} />
+        {page === 'home'    && <Home    onCta={() => navigate('contact')} />}
+        {page === 'contact' && <Contact />}
+        <Footer />
+      </>
+    );
+  }
+
+  ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>
