@@ -6,6 +6,7 @@ function TopNav({ current, onNav }) {
 
   const items = [
     { label: 'Services',   page: 'home',    anchor: '#services'   },
+    { label: 'About',      page: 'company'                        },
     { label: 'Philosophy', page: 'home',    anchor: '#philosophy' },
     { label: 'Mission',    page: 'home',    anchor: '#mission'    },
     { label: 'Contact',    page: 'contact'                        },
@@ -33,7 +34,7 @@ function TopNav({ current, onNav }) {
       {/* Desktop nav */}
       <nav className="tkt-desktop-nav" style={{ display: 'flex', gap: 4, marginLeft: 8, flexGrow: 1 }}>
         {items.map(({ label, page, anchor }) => {
-          const isActive = page === 'contact' ? current === 'contact' : false;
+          const isActive = page !== 'home' && current === page;
           return (
             <a
               key={label}
