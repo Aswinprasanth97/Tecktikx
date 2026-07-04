@@ -5,7 +5,7 @@ function TopNav({ current, onNav }) {
   const [menuOpen, setMenuOpen] = React.useState(false);
 
   const items = [
-    { label: 'Services',   page: 'home',    anchor: '#services'   },
+    { label: 'Services',   page: 'services'                       },
     { label: 'About',      page: 'company'                        },
     { label: 'Philosophy', page: 'home',    anchor: '#philosophy' },
     { label: 'Mission',    page: 'home',    anchor: '#mission'    },
