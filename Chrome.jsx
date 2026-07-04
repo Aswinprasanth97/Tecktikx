@@ -115,7 +115,7 @@ function Footer() {
     <footer style={{ background: 'var(--color-surface-dark)', color: 'var(--color-on-dark-soft)', padding: '64px 32px 40px' }}>
       <div style={{ maxWidth: 'var(--container-max)', margin: '0 auto', display: 'flex', flexWrap: 'wrap', gap: 48 }}>
         <div style={{ flex: '1 1 240px', minWidth: 200 }}>
-          <Wordmark label="Tecktikx" size={22} color="var(--color-on-dark)" />
+          <img src="assets/logo-white.png" alt="Techtikx" style={{ height: 48, width: 'auto', display: 'block' }} />
           <p style={{ marginTop: 16, fontSize: 14, lineHeight: 1.55, maxWidth: 260, color: 'var(--color-on-dark-soft)' }}>
             Engineering solutions that move your business forward.
           </p>
