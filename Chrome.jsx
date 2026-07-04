@@ -117,7 +117,6 @@ function Footer({ onNav }) {
   const cols = [
     ['Services',  ['Software integration', 'Remote support', 'Workflow automation']],
     ['Company',   ['About', 'Philosophy', 'Mission']],
-    ['Resources', ['Case studies', 'Blog', 'Support']],
     ['Legal',     ['Privacy', 'Terms']],
   ];
 
