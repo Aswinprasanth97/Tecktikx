@@ -103,7 +103,8 @@ function TopNav({ current, onNav }) {
   );
 }
 
-function Footer() {
+function Footer({ onNav }) {
+  const navMap = { Privacy: 'privacy', Terms: 'terms' };
   const cols = [
     ['Services',  ['Software integration', 'Remote support', 'Workflow automation']],
     ['Company',   ['About', 'Philosophy', 'Mission']],
@@ -131,6 +132,7 @@ function Footer() {
                 <li key={l}>
                   <a
                     href="#"
+                    onClick={(e) => { if (navMap[l]) { e.preventDefault(); onNav && onNav(navMap[l]); } }}
                     style={{ color: 'var(--color-on-dark-soft)', fontSize: 14, textDecoration: 'none', transition: 'color 120ms ease' }}
                     onMouseEnter={e => e.target.style.color = 'var(--color-on-dark)'}
                     onMouseLeave={e => e.target.style.color = 'var(--color-on-dark-soft)'}

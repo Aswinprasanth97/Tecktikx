@@ -111,6 +111,7 @@
 <script type="text/babel" src="Chrome.jsx"></script>
 <script type="text/babel" src="Home.jsx"></script>
 <script type="text/babel" src="Contact.jsx"></script>
+<script type="text/babel" src="Legal.jsx"></script>
 
 <script type="text/babel">
   function App() {
@@ -159,7 +160,9 @@
         <TopNav current={page} onNav={navigate} />
         {page === 'home'    && <Home    onCta={() => navigate('contact')} />}
         {page === 'contact' && <Contact />}
-        <Footer />
+        {page === 'privacy' && <Privacy />}
+        {page === 'terms'   && <Terms />}
+        <Footer onNav={navigate} />
       </>
     );
   }
