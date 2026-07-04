@@ -26,8 +26,8 @@ function TopNav({ current, onNav }) {
       display: 'flex', alignItems: 'center', gap: 32,
       padding: '0 32px',
     }}>
-      <a href="#" onClick={(e) => { e.preventDefault(); onNav('home'); }} style={{ textDecoration: 'none', flexShrink: 0 }}>
-        <Wordmark label="Tecktikx" size={22} />
+      <a href="#" onClick={(e) => { e.preventDefault(); onNav('home'); }} style={{ textDecoration: 'none', flexShrink: 0, display: 'flex', alignItems: 'center' }}>
+        <img src="assets/logo.png" alt="Techtikx" style={{ height: 44, width: 'auto', display: 'block' }} />
       </a>
 
       {/* Desktop nav */}
