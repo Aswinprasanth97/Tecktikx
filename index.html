@@ -112,6 +112,7 @@
 <script type="text/babel" src="Home.jsx"></script>
 <script type="text/babel" src="Contact.jsx"></script>
 <script type="text/babel" src="Legal.jsx"></script>
+<script type="text/babel" src="Pages.jsx"></script>
 
 <script type="text/babel">
   function App() {
@@ -160,8 +161,10 @@
         <TopNav current={page} onNav={navigate} />
         {page === 'home'    && <Home    onCta={() => navigate('contact')} />}
         {page === 'contact' && <Contact />}
-        {page === 'privacy' && <Privacy />}
-        {page === 'terms'   && <Terms />}
+        {page === 'privacy'  && <Privacy />}
+        {page === 'terms'    && <Terms />}
+        {page === 'services' && <Services onCta={() => navigate('contact')} />}
+        {page === 'company'  && <Company  onCta={() => navigate('contact')} />}
         <Footer onNav={navigate} />
       </>
     );

@@ -104,7 +104,16 @@ function TopNav({ current, onNav }) {
 }
 
 function Footer({ onNav }) {
-  const navMap = { Privacy: 'privacy', Terms: 'terms' };
+  const navMap = {
+    'Software integration': { page: 'services' },
+    'Remote support':       { page: 'services' },
+    'Workflow automation':  { page: 'services' },
+    'About':                { page: 'company' },
+    'Philosophy':           { page: 'home', anchor: '#philosophy' },
+    'Mission':              { page: 'home', anchor: '#mission' },
+    'Privacy':              { page: 'privacy' },
+    'Terms':                { page: 'terms' },
+  };
   const cols = [
     ['Services',  ['Software integration', 'Remote support', 'Workflow automation']],
     ['Company',   ['About', 'Philosophy', 'Mission']],
@@ -132,7 +141,7 @@ function Footer({ onNav }) {
                 <li key={l}>
                   <a
                     href="#"
-                    onClick={(e) => { if (navMap[l]) { e.preventDefault(); onNav && onNav(navMap[l]); } }}
+                    onClick={(e) => { const t = navMap[l]; if (t) { e.preventDefault(); onNav && onNav(t.page, t.anchor); } }}
                     style={{ color: 'var(--color-on-dark-soft)', fontSize: 14, textDecoration: 'none', transition: 'color 120ms ease' }}
                     onMouseEnter={e => e.target.style.color = 'var(--color-on-dark)'}
                     onMouseLeave={e => e.target.style.color = 'var(--color-on-dark-soft)'}
