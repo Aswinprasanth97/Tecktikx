@@ -126,9 +126,7 @@ function Home({ onCta }) {
               <Button variant="secondary" size="lg">See our services</Button>
             </div>
           </div>
-          <div style={{ height: 380 }}>
-            <HeroIllustration />
-          </div>
+          <HeroIllustration />
         </div>
       </section>
 
