@@ -50,6 +50,10 @@
     pointer-events: none; z-index: 9998; opacity: 0;
     transform: translate(-50%, -50%);
   }
+  /* Custom cursor is desktop-only — hide on touch / non-pointer devices and below the desktop breakpoint */
+  @media (hover: none), (pointer: coarse), (max-width: 768px) {
+    #tkt-cursor, #tkt-cursor-ring { display: none !important; }
+  }
 
   /* Nav underline animation */
   .tkt-nav-link { position: relative; }
