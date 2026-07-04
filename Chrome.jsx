@@ -20,14 +20,14 @@ function TopNav({ current, onNav }) {
 
   return (
     <header style={{
-      position: 'sticky', top: 0, zIndex: 20, height: 64,
+      position: 'sticky', top: 0, zIndex: 20, height: 72,
       background: 'rgba(245,249,252,0.85)', backdropFilter: 'blur(8px)',
       borderBottom: '1px solid var(--color-hairline)',
       display: 'flex', alignItems: 'center', gap: 32,
       padding: '0 32px',
     }}>
       <a href="#" onClick={(e) => { e.preventDefault(); onNav('home'); }} style={{ textDecoration: 'none', flexShrink: 0, display: 'flex', alignItems: 'center' }}>
-        <img src="assets/logo.png" alt="Techtikx" style={{ height: 44, width: 'auto', display: 'block' }} />
+        <img src="assets/logo.png" alt="Techtikx" style={{ height: 56, width: 'auto', display: 'block' }} />
       </a>
 
       {/* Desktop nav */}
@@ -77,7 +77,7 @@ function TopNav({ current, onNav }) {
       {/* Mobile dropdown */}
       {menuOpen && (
         <div style={{
-          position: 'absolute', top: 64, left: 0, right: 0,
+          position: 'absolute', top: 72, left: 0, right: 0,
           background: 'var(--color-canvas)', borderBottom: '1px solid var(--color-hairline)',
           padding: '12px 24px 20px', display: 'flex', flexDirection: 'column', gap: 4,
           zIndex: 100,
